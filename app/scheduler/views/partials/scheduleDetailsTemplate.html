@@ -1,0 +1,48 @@
+<!--<div class="panel panel-default">-->
+  <div class="well calendar-container">
+    <div ng-if="todaysEvents.length > 0" class="panel-group">
+      <div class="panel panel-default detail-panel">
+        <div class="panel-heading padLR5">
+          <h4 ng-click="isMissionCollapsed = !isMissionCollapsed">Mission Info
+            <button class="btn btn-default btn-xs pull-right">
+              <i class="fa fa-angle-down"></i>
+            </button>
+          </h4>
+        </div>
+        <div class="panel-collapse collapse" collapse="isMissionCollapsed" ng-if="!isMissionCollapsed">
+          <div class="panel-body">
+            <tomis-scheduler-details event="missionFields"></tomis-scheduler-details>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default detail-panel">
+        <div class="panel-heading padLR5">
+          <h4 ng-click="isAssetCollapsed = !isAssetCollapsed">Asset Info
+            <button class="btn btn-default btn-xs pull-right">
+              <i class="fa fa-angle-down"></i>
+            </button>
+          </h4>
+        </div>
+        <div class="panel-collapse collapse" collapse="isAssetCollapsed" ng-if="!isAssetCollapsed">
+          <div class="panel-body">
+            <tomis-scheduler-details event="assetFields"></tomis-scheduler-details>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default detail-panel">
+        <div class="panel-heading padLR5">
+          <h4 ng-click="isNonAssetCollapsed = !isNonAssetCollapsed">Non-Asset Info
+            <button class="btn btn-default btn-xs pull-right">
+              <i class="fa fa-angle-down"></i>
+            </button>
+          </h4>
+        </div>
+        <div class="panel-collapse collapse" collapse="isNonAssetCollapsed" ng-if="!isNonAssetCollapsed">
+          <div class="panel-body">
+            <lable>{{nonAssetFields}}</lable>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!--</div>-->

@@ -1,0 +1,104 @@
+<div ng-show="scheduleSelected" class="well panel-body calendar-container">
+  <div class="panel-heading">
+    <h4>
+      <i class="fa fa-tag fa-lg"></i> Mission#: {{msn}}
+    </h4>
+  </div>
+  <form>
+    <div class="row">
+      <div class="col-xs-6">
+        <label for="startDate">Start Date</label>
+          <p class="input-group">
+            <input
+              type="text"
+              readonly="true"
+              class="form-control"
+              datepicker-popup="{{datePickerFormat}}"
+              ng-model="$parent.startDate"
+              is-open="datePickerStatus.startOpened"
+              min-date="minDate"
+              max-date="'2020-06-22'"
+              datepicker-options="dateOptions"
+              close-text="Close"
+            />
+            <span class="input-group-btn">
+              <button type="button" class="btn btn-default" ng-click="openStartDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+          </p>
+      </div>
+
+      <div class="col-xs-6">
+        <label for="endDate">End Date</label>
+          <p class="input-group">
+            <input
+              type="text"
+              readonly="true"
+              class="form-control"
+              datepicker-popup="{{datePickerFormat}}"
+              ng-model="$parent.endDate"
+              is-open="datePickerStatus.endOpened"
+              min-date="minDate"
+              max-date="'2020-06-22'"
+              datepicker-options="dateOptions"
+              close-text="Close"
+            />
+            <span class="input-group-btn">
+              <button type="button" class="btn btn-default" ng-click="openEndDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+          </p>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="namedOperation">Named Operation</label>
+      <select class="form-control" ng-model="$parent.namedOperation">
+        <option>Named Operation 1</option>
+        <option>Named Operation 2</option>
+        <option>Named Operation 3</option>
+        <option>Named Operation 4</option>
+        <option>Named Operation 5</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="missionCategory">Mission Category</label>
+      <select class="form-control" ng-model="$parent.missionCategory">
+        <option>Mission Category 1</option>
+        <option>Mission Category 2</option>
+        <option>Mission Category 3</option>
+        <option>Mission Category 4</option>
+        <option>Mission Category 5</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Mission Type</label>
+      <select class="form-control" ng-model="$parent.missionType">
+        <option>Mission Type 1</option>
+        <option>Mission Type 2</option>
+        <option>Mission Type 3</option>
+        <option>Mission Type 4</option>
+        <option>Mission Type 5</option>
+      </select>
+      <label>Sub Type</label>
+      <select class="form-control" ng-model="$parent.subType">
+        <option>Sub Type 1</option>
+        <option>Sub Type 2</option>
+        <option>Sub Type 3</option>
+        <option>Sub Type 4</option>
+        <option>Sub Type 5</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="missionDescription">Mission Description</label>
+      <textarea class="form-control" placeholder="" rows="4" ng-model="$parent.missionDescription"></textarea>
+    </div>
+    <div class="form-group" ng-if="$parent.showGrid">
+      <label for="missionDescription">In Support Of</label>
+      <div id="grid1" ui-grid="$parent.gridOptions" class="grid" ui-grid-resize-columns></div>
+    </div>
+    <div class="btn-group">
+      <button type="button" class="btn btn-sm btn-info" ng-click="cancel()">Clone</button>
+      <button type="button" class="btn btn-sm btn-primary" ng-click="saveSchedule()">Save</button>
+      <button type="button" class="btn btn-sm btn-danger" ng-click="cancelSchedule()">Cancel</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,43 @@
+.onTab
+ { 	
+	background: transparent url('../images/offTab1.gif') no-repeat;
+    height: 20px;
+	width: 80px; 
+	border-left: thin solid #D0C1A8; 
+	border-right: thin solid #D0C1A8; 
+	border-top: thin solid #D0C1A8; 
+	text-align: center; 
+	COLOR: #ffffff;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	font-weight:bold;
+	cursor:pointer;
+ }
+
+.offTab 
+ {
+ 	background: transparent url('../images/onTab1.gif') no-repeat;
+    height: 20px;
+	width: 80px; 
+	text-align: center; 
+	border-left: thin solid #D0C1A8; 
+	border-right: thin solid #D0C1A8; 
+	border-top: thin solid #D0C1A8; 
+	COLOR: #ffffff;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	font-weight:bold;
+	cursor:pointer;
+}
+ 
+.tabBody
+ {
+ 	border-left: thin solid #C4C4C4; 
+	border-right: thin solid #C4C4C4; 
+	border-bottom: thin solid #C4C4C4; 
+	border-top: thin solid #C4C4C4; 
+	background-color:#3E2F1A;		
+	padding: 1em;
+	width: 61%;
+			
+ }

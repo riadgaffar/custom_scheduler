@@ -1,0 +1,38 @@
+.attachmentGrid {
+		width: 250px;
+		border: 1px solid silver;
+	}
+	
+.attachmentGrid .dojoxGridHeader { display:none; }
+.attachmentGrid .dojoxGridRowOver .dojoxGridCell {
+	background-color: white;
+	color: black;
+}
+.attachmentGrid .dojoxGridRowOdd {
+	background-color: white;
+}
+.attachmentGrid .deleteDiv, .deleteDiv {
+	border: 0px;
+	width: 19px;
+	height: 23px;
+	background-repeat: no-repeat;
+}
+.attachmentGrid .deleteOnImg, .deleteOnImg {
+	background-image: url('../images/deleteOn.gif');
+}
+.attachmentGrid .deleteOffImg, .deleteOffImg {
+	background-image: url('../images/deleteOff.gif');
+}
+
+.attachmentGrid .attachmentCellDiv, .attachmentCellDiv {
+	border: 0px;
+	width: 15px;
+	height: 35px;
+	background-repeat: no-repeat;
+}
+.attachmentGrid .attachmentCellOnImg, .attachmentCellOnImg {
+	background-image: url('../images/attachmentOn.gif');
+}
+.attachmentGrid .attachmentCellOffImg, .attachmentCellOffImg {
+	background-image: url('../images/attachmentOff.gif');
+}

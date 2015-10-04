@@ -1,0 +1,19 @@
+<div id="{{po_id}}" class="fc-popover fc-more-popover">
+  <div class="fc-header fc-widget-header">
+    <span class="fc-title">{{selectedDate}}</span>
+    <span class="fc-close fc-icon fc-icon-x pull-right" ng-click="closeit()"></span>
+    <div class="fc-clear"></div>
+  </div>
+  <div class="fc-body fc-widget-content">
+    <div class="fc-event-container">
+      <div ng-repeat="event in $parent.todaysEvents track by $index">
+        <div ng-click="calEventClick(event)" class="col-xs-12 event-box hoverable" ng-style="{'background-color': event.backgroundColor}">
+          <tomis-scheduler-details event="::event"></tomis-scheduler-details>
+        </div>
+      </div>
+      <h3 id="no-schedule-text" ng-show="todaysEvents.length === 0" class="no-popup-text">
+        NO MISSION SCHEDULED FOR DATE SELECTED
+      </h3>
+    </div>
+  </div>
+</div>

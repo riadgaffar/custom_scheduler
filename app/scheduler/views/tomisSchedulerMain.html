@@ -1,0 +1,102 @@
+<div id="tomis-scheduling" role="main">
+  <div class="container-fluid">
+    <div class="page-header">
+      <h1>{{headerTitle}}</h1>
+    </div>
+    <section>
+      <section ng-show="!newSchedule" class="row row-bottomPadding-10 container col-xs-12">
+        <section class="col-xs-6 col-md-4">
+          <label class="control-label">BOO/GCS</label>
+          <ui-select ng-model="lovData.booGcsCd" reset-search-input="true" ng-disabled="disabled" reset-search-input="false">
+            <ui-select-match ng-attr-placeholder="Select a Base of Operation">
+              <span data-ng-class="getLovValueClass($select.selected)" data-ng-bind-html="$select.selected.description"></span>
+            </ui-select-match>
+            <ui-select-choices  data-repeat="i.code as i in lovData.booGcsLov | filter:{ code:'!'+'RRB', description: $select.search }">
+              <section data-ng-bind-html="::i.description | highlight: $select.search"></section>
+            </ui-select-choices>
+          </ui-select>
+        </section>
+        <section class="col-xs-3 col-md-offset-1">
+          <label class="control-label" for="timeZoneButtons">Local/Zulu</label>
+          <div class="input-btn-group">
+            <button class="btn btn-default" data-ng-model="lovData.localInd" btn-radio="true">Local Time</button>
+            <button class="btn btn-default" data-ng-model="lovData.localInd" btn-radio="false">Zulu Time</button>
+          </div>
+        </section>
+        <section class="col-xs-6 col-md-4">
+          <label class="control-label">Time Zone</label>
+          <ui-select ng-model="lovData.timeZone" reset-search-input="true" data-ng-disabled="!lovData.localInd" reset-search-input="false">
+            <ui-select-match ng-attr-placeholder="Select a timeZone">
+              <span data-ng-class="getLovValueClass($select.selected)" data-ng-bind-html="$select.selected.description"></span>
+            </ui-select-match>
+            <ui-select-choices  data-repeat="i.code as i in lovData.timeZoneCodeLov | filter: $select.search">
+              <section data-ng-bind-html="::i.description | highlight: $select.search"></section>
+            </ui-select-choices>
+          </ui-select>
+        </section>
+      </section>
+      <section ng-show="!newSchedule" class="btn-toolbar col-xs-12 padTB5">
+        <section class="col-xs-4">
+          <section class="input-btn-group">
+            <!-- <button class="btn btn-default btn-center no-padding" ng-click="changeView('agendaDay', 'myCalendar')">
+              <span class="fa-stack fa-3x">
+                <strong class="fa-stack-1x month-text">{{today.monthAbr}}</strong>
+                <i class="fa fa-calendar-o fa-stack-2x"></i>
+                <strong class="fa-stack-1x calendar-text">{{today.day}}</strong>
+              </span>
+              <i class="col-md-3 col-md-offset-3 title-text-today">Today</i>
+            </button>
+            <button class="btn btn-default btn-center no-padding" ng-click="changeView('agendaWeek', 'myCalendar')">
+              <span class="fa-stack fa-3x">
+                <i class="fa fa-calendar fa-stack-2x"></i>
+              </span>
+              <i class="col-xs-3 title-text-other">Weekly View</i>
+            </button>
+            <button class="btn btn-default btn-center no-padding" ng-click="changeView('month', 'myCalendar')">
+              <span class="fa-stack fa-3x">
+                <i class="fa fa-calendar fa-stack-2x"></i>
+              </span>
+              <i class="col-xs-3 title-text-other">Monthly View</i>
+            </button> -->
+            <button class="btn btn-success" ng-click="changeView('agendaDay', 'tomisSchedulingCalendar')">Today</button>
+            <button class="btn btn-success" ng-click="changeView('agendaWeek', 'tomisSchedulingCalendar')">Weekly View</button>
+            <button class="btn btn-success" ng-click="changeView('month', 'tomisSchedulingCalendar')">Monthly View</button>
+          </section>
+        </section>
+        <section class="pull-right">
+          <section class="input-btn-group">
+            <button disabled=true class="btn btn-info" ng-click="addNewSchedule('uas')">Add UAS Schedule</button>
+            <button disabled=true class="btn btn-info" ng-click="addNewSchedule('air')">Add Air Schedule</button>
+            <button disabled=true class="btn btn-info" ng-click="addNewSchedule('marine')">Add Marine Schedule</button>
+            <button disabled=true class="btn btn-info" ng-click="addNewSchedule('na')">Add Non-Asset Schedule</button>
+          </section>
+        </section>
+      </section>
+      <section ng-show="scheduleSelected" class="col-xs-12 padTB5">
+        <span ng-click="slideEditPane('showedit')" class="hoverable">
+          <i id="collapse-expand-btn" class="fa fa-arrow-circle-left rs hoverable" title="Expand/Collapse Schedule Edit Pane"> Expand/Collapse Schedule</i>
+        </span>
+      </section>
+
+      <section class="col-xs-12 no-padding">
+        <section id="calendar-pane" class="panel-body calendar-container col-xs-7">
+          <div ng-show="!newSchedule" ng-repeat="calendar in calendars track by $index">
+            <section
+            id="{{calendar._id}}"
+            class="calendar"
+            ng-model="eventSources"
+            calendar="{{calendar._id}}"
+            ui-calendar="calendar.calendarConfig">
+          </section>
+        </div>
+      </section>
+      <section id="nav-pane" class="col-xs-1 vertical-nav" ng-include src=navbarTemplate.url></section>
+      <section ng-show="!newSchedule" id="middle-pane" class="col-xs-4 padLR1" ng-include src=detailsTemplate.url></section>
+      <!-- <section ng-include id="right-pane" class="col-xs-4 no-padding"  src=template.url></section> -->
+    </section>
+  </section>
+  <!-- <section ng-show="!newSchedule" id="middle-pane" class="col-xs-4 padLR5" ng-include src=detailsTemplate.url></section>
+  <section ng-include id="right-pane" class="col-xs-4 no-padding"  src=template.url></section> -->
+
+</div>
+</div>

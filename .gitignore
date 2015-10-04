@@ -1,0 +1,6 @@
+*.iml
+.DS_Store
+.idea/
+app/styles/css/
+external_components/
+node_modules/

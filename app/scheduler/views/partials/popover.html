@@ -7,7 +7,7 @@
   <div class="fc-body fc-widget-content">
     <div class="fc-event-container">
       <div ng-repeat="event in $parent.todaysEvents track by $index">
-        <div ng-click="calEventClick(event)" class="col-xs-12 event-box hoverable" ng-style="{'background-color': event.backgroundColor}">
+        <div ng-click="showRoData(event, $index)" class="col-xs-12 event-box hoverable" ng-style="{'background-color': event.backgroundColor}">
           <tomis-scheduler-details event="::event"></tomis-scheduler-details>
         </div>
       </div>

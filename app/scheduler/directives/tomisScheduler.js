@@ -1,13 +1,13 @@
 var tomisModule = angular.module("TomisModule", ['ui.bootstrap'
     , 'ui.select' // Typeahead
     , 'ngSanitize' // ui.select dependency
-    , 'toaster' //Toaster popup
+    //, 'toaster' //Toaster popup
     , 'ngMessages'
     , 'ngAnimate'
     , 'ngRoute'
     , 'ui.calendar'
-    , 'ui.grid'
-    , 'ui.grid.edit'
+    //, 'ui.grid'
+    //, 'ui.grid.edit'
     , 'mgcrea.ngStrap'
     , 'Scope.safeApply'
 ]);
@@ -126,14 +126,9 @@ tomisModule.filter('leadingZero', function () {
                         //     }
                         // },
                         dayClick: function (date, jsEvent, view) {
-                            // fullcalendar hide events into next month for month view only
-                            // dictated by design.
-                            // fullcalendar hide events into next month for month view only
-                            // dictated by design.
-                            if (view.name === 'month' && date.month() !== view.start.month() + 1) {
+                            if(view.name === 'month' && date.month() !== view.start.month() + 1) {
                                 return false;
-                            }
-                            ;
+                            };
                             $scope.daySelected = true;
                             var selected_date_string = date.format();
                             var selected_month = $filter('leadingZero')(date.month() + 1, 2);
@@ -154,36 +149,16 @@ tomisModule.filter('leadingZero', function () {
                                     clickedDate: date
                                 }
                                 $scope.$broadcast('selectedDateEvents', dayEvents);
-                                //$scope.$broadcast('selectedDateEvents', events);
-                                //var dayElement = angular.element('.fc-day[data-date="' + date.format(scheduleDateFormat) + '"]');
-
-                                //  var myPopover = $popover(element, _.extend({
-                                //      container: 'body', //element.parent(),
-                                //      html: true,
-                                //      templateUrl: 'script/schedule/scheduler/views/partials/popover.html',
-                                //      autoClose: 'true'
-                                //  }));
-                                //  myPopover.$promise.then(function(po) {
-                                //    console.info('***po', po);
-                                //    myPopover.show();
-                                //  });
-                                //  myPopover.$scope.selectedDate = dayEvents.clickedDate;
-                                //  myPopover.$scope.po_id = 'po-' + date.format('YYYY-MM-DD');
-                                //  myPopover.$scope.todaysEvents = dayEvents.allEvents;
-                                //  myPopover.$scope.closeit = function() {
-                                //    angular.element('#' + myPopover.$scope.po_id).remove();
-                                //    angular.element('#' + myPopover.$scope.po_id).hide();
-                                //  }
                             }
                         },
                         eventRender: function (event, element, view) {
                             element.addClass('clickThrough');
                             // fullcalendar hide events into next month for month view only
                             // dictated by design.
-                            if (view.name === 'month' && event.start.month() !== view.start.month() + 1) {
+                            if(view.name === 'month' && event.start.month() !== view.start.month() + 1) {
                                 return false;
                             } else {
-                                element.attr('date-num', event.start.format('YYYY-MM-DD'));
+                                element.attr('date-num', event.start.format(scheduleDateFormat));
                                 element.find('.fc-content').append('<br/>' +
                                     '<span class="fc-title">' +
                                     _.trunc(event.missionId) +
@@ -192,7 +167,7 @@ tomisModule.filter('leadingZero', function () {
                                     '<span class="fc-title">' +
                                     _.trunc(event.missionDsc, 15) +
                                     '</span>');
-                                //element.find('.fc-content').addClass('hoverable');
+                                element.find('.fc-content').addClass('hoverable');
                                 $compile(element)($scope);
                             }
                         },
@@ -405,20 +380,9 @@ tomisModule.filter('leadingZero', function () {
             $scope.openEndDate = function ($event) {
                 $scope.datePickerStatus.endOpened = true;
             };
-            /***********************************/
-            // Date click event handler for updating DOM
-            // $scope.$on('selectedDateEvents', function(event, data) {
-            //   $timeout(function() {
-            //     $scope.todaysEvents = data;
-            //     if (!_.size($scope.todaysEvents) && $scope.scheduleSelected) {
-            //       $scope.scheduleSelected = false;
-            //       $scope.slideEditPane('showview');
-            //     }
-            //     initFields();
-            //   });
-            // });
+
             $scope.$on('selectedDateEvents', function (event, data) {
-                $timeout(function () {
+                $timeout(function() {
                     $scope.todaysEvents = data.allEvents;
                     console.info('$scope.todaysEvents', $scope.todaysEvents);
                     if (!_.size($scope.todaysEvents) && $scope.scheduleSelected) {
@@ -434,39 +398,24 @@ tomisModule.filter('leadingZero', function () {
                         templateUrl: 'app/scheduler/views/partials/popover.html',
                         autoClose: 'true'
                     }));
-                    myPopover.$promise.then(function () {
+                    myPopover.$promise.then(function(po) {
                         myPopover.show();
                     });
                     myPopover.$scope.selectedDate = data.clickedDate.format('MMM Do YYYY');
                     myPopover.$scope.po_id = 'po-' + data.clickedDate.format('YYYY-MM-DD');
                     myPopover.$scope.todaysEvents = data.allEvents;
-                    myPopover.$scope.closeit = function () {
+                    myPopover.$scope.closeit = function() {
                         angular.element('#' + myPopover.$scope.po_id).remove();
                         angular.element('#' + myPopover.$scope.po_id).hide();
-                    };
-                    myPopover.$scope.calEventClick = function (calEvent) {
-
-                        //$scope.formFields = _.omit(calEvent, "_id", "backgroundColor", "stick", "source", "className", "allDay", "_allDay", "_start", "_end");
-
-                        //$scope.formFields = calEvent;
-                        console.info('****calEvent', calEvent);
-                        $scope.missionFields = _.pick(calEvent, 'title', 'missionId', 'missionNbr', 'missionDsc', 'gcs', 'frequencyCd', 'start', 'end');
-                        $scope.assetFields = _.pick(calEvent, 'assetNbr', 'boo', 'briefEndDt', 'briefStartDt', 'personnelFullName', 'totalPersons');
-                        $scope.nonAssetFields = "NOT AVAILABLE";
-                        //console.info('****calEvent', calEvent);
+                    }
+                    // TODO: The readonly data comes from the service for showRoData.
+                    // hook up service when available
+                    myPopover.$scope.showRoData = function(evnt, index) {
+                        var newEvent = _.omit(evnt, "_id", "backgroundColor", "stick", "source", "className", "allDay", "_allDay", "_start", "_end");
+                        $scope.roScheduleData = newEvent;
                         $scope.scheduleSelected = true;
-                        //$scope.daySelected = false;
-                        // if ($scope.template !== $scope.templates[1]) {
-                        //   $scope.template = $scope.templates[1];
-                        // }
-                        initFields();
-                        //$scope.slideEditPane('updateview');
-
-
-                    };
-
-
-                    initFields();
+                    }
+                    //initFields();
                 });
             });
 

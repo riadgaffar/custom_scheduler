@@ -1,0 +1,47 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title" ng-click="isMissionCollapsed = !isMissionCollapsed">Mission Info
+      <button class="btn btn-default btn-xs pull-right">
+        <i class="fa fa-angle-down"></i>
+      </button>
+    </h4>
+  </div>
+  <div class="panel panel-collapse collapse" collapse="isMissionCollapsed">
+    <div class="panel-body">
+      <div ng-repeat="sched in scheduleData">
+        <div class="col-xs-6">{{sched.label}}</div>
+        <div class="col-xs-6">{{sched.value}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title" ng-click="isAssetCollapsed = !isAssetCollapsed">Asset Info
+      <button class="btn btn-default btn-xs pull-right">
+        <i class="fa fa-angle-down"></i>
+      </button>
+    </h4>
+  </div>
+  <div class="panel panel-collapse collapse" collapse="isAssetCollapsed">
+    <div class="panel-body">
+      <div class="col-xs-6">NOT</div>
+      <div class="col-xs-6">AVAILABLE</div>
+    </div>
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title" ng-click="isNonAssetCollapsed = !isNonAssetCollapsed">Non-Asset Info
+      <button class="btn btn-default btn-xs pull-right">
+        <i class="fa fa-angle-down"></i>
+      </button>
+    </h4>
+  </div>
+  <div class="panel panel-collapse collapse" collapse="isNonAssetCollapsed">
+    <div class="panel-body">
+      <div class="col-xs-6">NOT</div>
+      <div class="col-xs-6">AVAILABLE</div>
+    </div>
+  </div>
+</div>

@@ -132,6 +132,11 @@ h2.no-popup-text {
   color: #1E90FF;
 }
 
+.panel-default > .panel-heading {
+  color: #FFFFFF !important;
+  background-color: #000000 !important;
+  border-color: #ddd !important;
+}
 
 .no-bg {
   background-color: transparent;
@@ -323,25 +328,45 @@ h2.no-popup-text {
   color: #1E90FF;
 }
 
+/*.details-box {*/
+  /*position: absolute;*/
+  /*top: 0;*/
+  /*background-color: rgba(0, 0, 0, 0.1);*/
+  /*text-align: center;*/
+  /*line-height: 16px;*/
+  /*padding-bottom: 1px;*/
+  /*border-radius: 2%;*/
+  /*margin: 0 0 5px -18px;*/
+  /*width: 98%;*/
+/*}*/
+
+/*.detail-content {*/
+  /*border-right: 1px solid #DDDDDD;*/
+  /*float: left;*/
+  /*padding: 2px 10px 0 5px;*/
+  /*width: 100%;*/
+/*}*/
 .details-box {
-  position: absolute;
-  top: 0;
-  background-color: rgba(0, 0, 0, 0.1);
-  text-align: center;
-  line-height: 16px;
-  padding-bottom: 1px;
-  border-radius: 2%;
-  margin: 0 0 5px -18px;
-  width: 98%;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  font-size: 12px;
+  margin: 8px;
+  /* h4,
+  h5 {
+    background-color: #eeeeee;
+    border-bottom: 1px solid #dddddd;
+    margin: 0;
+    padding: 8px 5px 8px 10px;
+  }
+  .form-group {
+    margin-bottom: 0;
+  } */
 }
-
 .detail-content {
-  border-right: 1px solid #DDDDDD;
-  float: left;
-  padding: 2px 10px 0 5px;
-  width: 100%;
+  font-size: 12px;
+  margin: 0;
+  padding: 10px 10px 8px;
 }
-
 .detail-panel {
   line-height: 16px;
 }
